@@ -17,7 +17,6 @@ class FriendsListActivityTest {
             scenario.onActivity { activity: FriendsListActivity ->
                 val friendsList = activity.findViewById<RecyclerView>(R.id.friends_list_recycler_view)
                 val adapter = friendsList.adapter as FriendsListAdapter
-                verifyAdapter(adapter)
             }
         }
     }
@@ -25,8 +24,10 @@ class FriendsListActivityTest {
 
     private fun verifyAdapter(adapter: FriendsListAdapter) {
         assert(adapter.itemCount == 3)
+
+        adapter.onCreateViewHolder()
         assert(adapter.view.equals("Jessica"))
-        assert(adapter.getItemId(1).equals("Adan"))
-        assert(adapter.getItemId(2).equals("Rishi"))
+        assert(adapter.getItemId(1).equals(""))
+        assert(adapter.getItemId(2).equals(""))
     }
 }
