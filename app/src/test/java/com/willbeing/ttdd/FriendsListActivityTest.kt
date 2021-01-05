@@ -1,10 +1,13 @@
 package com.willbeing.ttdd
 
 import android.R
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
+import junit.framework.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.Mockito
 import org.robolectric.RobolectricTestRunner
 
 //TODO fixme
@@ -22,12 +25,22 @@ class FriendsListActivityTest {
     }
 
 
-    private fun verifyAdapter(adapter: FriendsListAdapter) {
+    @Test
+    fun `verify adapter item count`(adapter: FriendsListAdapter) {
         assert(adapter.itemCount == 3)
 
         adapter.onCreateViewHolder()
         assert(adapter.view.equals("Jessica"))
         assert(adapter.getItemId(1).equals(""))
         assert(adapter.getItemId(2).equals(""))
+    }
+
+    @Test
+    fun `verify adapter on create view holder`(adapter: FriendsListAdapter) {
+        val parent = Mockito.mock(ViewGroup::class.java)
+        val viewHolder = adapter.onCreateViewHolder(parent, Mockito.anyInt())
+        val view = viewHolder.itemView
+        assertTrue(view.parent == null)
+        assertTrue(viewHolder.textView.id == R.id.text1)
     }
 }
