@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class FriendsListAdapter: RecyclerView.Adapter<FriendsListAdapter.VH>() {
-    class VH(itemView: View): RecyclerView.ViewHolder(itemView) {
+class FriendsListAdapter(private val friends: Array<String>): RecyclerView.Adapter<FriendsListAdapter.ViewHolder>() {
+    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val textView: TextView
 
         init {
@@ -15,13 +15,13 @@ class FriendsListAdapter: RecyclerView.Adapter<FriendsListAdapter.VH>() {
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(android.R.layout.activity_list_item, parent, false)
 
-        return VH(view)
+        return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: VH, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         TODO("Not yet implemented")
     }
 

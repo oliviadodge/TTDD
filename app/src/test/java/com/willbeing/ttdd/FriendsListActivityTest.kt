@@ -28,11 +28,6 @@ class FriendsListActivityTest {
     @Test
     fun `verify adapter item count`(adapter: FriendsListAdapter) {
         assert(adapter.itemCount == 3)
-
-        adapter.onCreateViewHolder()
-        assert(adapter.view.equals("Jessica"))
-        assert(adapter.getItemId(1).equals(""))
-        assert(adapter.getItemId(2).equals(""))
     }
 
     @Test
@@ -41,6 +36,13 @@ class FriendsListActivityTest {
         val viewHolder = adapter.onCreateViewHolder(parent, Mockito.anyInt())
         val view = viewHolder.itemView
         assertTrue(view.parent == null)
-        assertTrue(viewHolder.textView.id == R.id.text1)
+    }
+
+    @Test
+    fun `verify adapter on bind view holder`(adapter: FriendsListAdapter) {
+        val parent = Mockito.mock(ViewGroup::class.java)
+        val viewHolder = adapter.onCreateViewHolder(parent, Mockito.anyInt())
+        val view = viewHolder.itemView
+        assertTrue(view.parent == null)
     }
 }
