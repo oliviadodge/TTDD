@@ -1,3 +1,3 @@
 package com.willbeing.ttdd.friends
 
-class Friend(val name: String) {}
+data class Friend(val name: String)

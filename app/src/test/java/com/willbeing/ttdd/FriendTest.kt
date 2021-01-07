@@ -19,4 +19,14 @@ class FriendTest {
     fun `friend name is as expected`() {
         assertEquals(friend.name, "Sammie")
     }
+
+    @Test
+    fun `friends are equal`() {
+        assertEquals(friend, Friend("Sammie"))
+    }
+
+    @Test
+    fun `some friends are not equal`() {
+        assertNotEquals(friend, Friend("Joseph"))
+    }
 }

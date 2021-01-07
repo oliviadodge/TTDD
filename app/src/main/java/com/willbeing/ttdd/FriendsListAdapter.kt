@@ -5,8 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.willbeing.ttdd.friends.Friend
 
-class FriendsListAdapter(private val friends: Array<String>): RecyclerView.Adapter<FriendsListAdapter.ViewHolder>() {
+class FriendsListAdapter(private val friends: List<Friend>): RecyclerView.Adapter<FriendsListAdapter.ViewHolder>() {
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val textView: TextView
 
