@@ -1,18 +1,18 @@
 package com.willbeing.ttdd
 
-import android.os.Build
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.willbeing.ttdd.friends.Friend
 import junit.framework.Assert
 import org.junit.Test
 
 import org.junit.runner.RunWith
 import org.mockito.Mockito
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
 
-@RunWith(RobolectricTestRunner::class)
-class FriendsListAdapterTest {
+@RunWith(AndroidJUnit4::class)
+class FriendsListAdapterAndroidTest {
 
     private val friendsList: List<Friend> = listOf(
             Friend("Sammie"),
@@ -23,15 +23,17 @@ class FriendsListAdapterTest {
 
     @Test
     fun onCreateViewHolder() {
-        val parent = Mockito.mock(ViewGroup::class.java)
-        val viewHolder = friendsListAdapter.onCreateViewHolder(parent, Mockito.anyInt())
+        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+        val parent = FrameLayout(appContext)
+        val viewHolder = friendsListAdapter.onCreateViewHolder(parent, 0)
         val view = viewHolder.itemView
         Assert.assertTrue(view.parent == null)
     }
 
     @Test
     fun onBindViewHolder() {
-        val parent = Mockito.mock(ViewGroup::class.java)
+        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+        val parent = FrameLayout(appContext)
         val viewHolder = friendsListAdapter.onCreateViewHolder(parent, Mockito.anyInt())
         friendsListAdapter.onBindViewHolder(viewHolder, 2)
         assert(viewHolder.textView.text == "Joseph")
