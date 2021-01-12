@@ -12,7 +12,7 @@ import org.junit.runner.RunWith
 import org.mockito.Mockito
 
 @RunWith(AndroidJUnit4::class)
-class FriendsListAdapterAndroidTest {
+class FriendsListAdapterTest {
 
     private val friendsList: List<Friend> = listOf(
         Friend("Sammie"),
