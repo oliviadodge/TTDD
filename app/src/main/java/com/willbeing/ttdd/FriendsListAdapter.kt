@@ -7,8 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.willbeing.ttdd.friends.Friend
 
-class FriendsListAdapter(private val friends: List<Friend>): RecyclerView.Adapter<FriendsListAdapter.ViewHolder>() {
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+class FriendsListAdapter(private val friends: List<Friend>) : RecyclerView.Adapter<FriendsListAdapter.ViewHolder>() {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textView: TextView
 
         init {
@@ -23,11 +23,10 @@ class FriendsListAdapter(private val friends: List<Friend>): RecyclerView.Adapte
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.textView.text = friends.get(position).name
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return friends.size
     }
-
 }
