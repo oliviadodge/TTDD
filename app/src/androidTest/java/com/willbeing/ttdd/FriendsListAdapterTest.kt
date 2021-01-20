@@ -34,10 +34,11 @@ class FriendsListAdapterTest {
     fun onBindViewHolder() {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         val parent = FrameLayout(appContext)
-        val viewHolder = friendsListAdapter.onCreateViewHolder(parent, Mockito.anyInt())
-        bindViewHolderAt(0, "Sammie", viewHolder)
-        bindViewHolderAt(1, "Joseph", viewHolder)
-        bindViewHolderAt(2, "Mara", viewHolder)
+        friendsListAdapter.onCreateViewHolder(parent, Mockito.anyInt()).also {
+            bindViewHolderAt(0, "Sammie", it)
+            bindViewHolderAt(1, "Joseph", it)
+            bindViewHolderAt(2, "Mara", it)
+        }
     }
 
     private fun bindViewHolderAt(
