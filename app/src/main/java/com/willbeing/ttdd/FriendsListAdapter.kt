@@ -9,11 +9,8 @@ import com.willbeing.ttdd.friends.Friend
 
 class FriendsListAdapter(private val friends: List<Friend>) : RecyclerView.Adapter<FriendsListAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textView: TextView
+        val textView: TextView = itemView.findViewById(android.R.id.text1)
 
-        init {
-            textView = itemView.findViewById(android.R.id.text1)
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,7 +20,7 @@ class FriendsListAdapter(private val friends: List<Friend>) : RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textView.text = friends.get(position).name
+        holder.textView.text = friends[position].name
     }
 
     override fun getItemCount(): Int {
